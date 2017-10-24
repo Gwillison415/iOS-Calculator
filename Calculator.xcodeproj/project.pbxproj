@@ -12,6 +12,7 @@
 		700C86581F7755310020F4DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 700C86561F7755310020F4DB /* Main.storyboard */; };
 		700C865A1F7755310020F4DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 700C86591F7755310020F4DB /* Assets.xcassets */; };
 		700C865D1F7755310020F4DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 700C865B1F7755310020F4DB /* LaunchScreen.storyboard */; };
+		700C86651F7766250020F4DB /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700C86641F7766250020F4DB /* CalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		700C86591F7755310020F4DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		700C865C1F7755310020F4DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		700C865E1F7755310020F4DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		700C86641F7766250020F4DB /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				700C86521F7755310020F4DB /* AppDelegate.swift */,
 				700C86541F7755310020F4DB /* ViewController.swift */,
 				700C86561F7755310020F4DB /* Main.storyboard */,
+				700C86641F7766250020F4DB /* CalculatorBrain.swift */,
 				700C86591F7755310020F4DB /* Assets.xcassets */,
 				700C865B1F7755310020F4DB /* LaunchScreen.storyboard */,
 				700C865E1F7755310020F4DB /* Info.plist */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				700C86651F7766250020F4DB /* CalculatorBrain.swift in Sources */,
 				700C86551F7755310020F4DB /* ViewController.swift in Sources */,
 				700C86531F7755310020F4DB /* AppDelegate.swift in Sources */,
 			);
