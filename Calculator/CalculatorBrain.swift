@@ -10,9 +10,10 @@ import Foundation
 
 class CalculatorBrain {
     private var accumulator = 0.0
-    
+    private var internalProgram = [AnyObject]() // stores an array of objects (operands)that are doubles and strings (operations)
     func setOperand(operand: Double) {
         accumulator = operand
+        internalProgram.append(operand as AnyObject) // operand is a double / struct but the bridging to the NSObject class
     }
     
   
@@ -41,6 +42,7 @@ class CalculatorBrain {
     
     
     func performOperation(symbol : String)  {  // if below will ignore ops it doesn't understand
+        internalProgram.append(symbol as AnyObject)
         if let  operation = operations[symbol] { // [] == lookup in ops dict
             switch operation {
             case .Constant(let value): accumulator = value
@@ -66,6 +68,32 @@ class CalculatorBrain {
             accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
             pending = nil
         }
+    }
+    typealias PropertyList = AnyObject // typeAlias lets us create a type -
+    var program: PropertyList { // set a new type for documentation purposes
+        get {
+            return internalProgram as CalculatorBrain.PropertyList // return internal data structure to public caller BUT
+            // when we return a value type we return a copy of that value type
+        }
+        set {
+            clear()
+            if let arrayOfOps = newValue as? [AnyObject] {
+                for op in arrayOfOps {
+                    if let operand = op as? Double {
+                        setOperand(operand: operand)
+                    } else if let operation = op as? String {
+                        performOperation(symbol: operation)
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    func clear() {
+        accumulator = 0.0
+        pending = nil
+        internalProgram.removeAll()
     }
     var result: Double {
         get {
