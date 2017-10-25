@@ -7,6 +7,10 @@
 //
 
 import UIKit
+#if DEBUG
+    import AdSupport
+#endif
+import Leanplum
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +19,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // We've inserted your Test API keys here for you :)
+        #if DEBUG
+            Leanplum.setDeviceId(ASIdentifierManager.shared().advertisingIdentifier.uuidString)
+            Leanplum.setAppId("YOUR_APP_ID",
+                              withDevelopmentKey:"YOUR_DEVELOPMENT_KEY")
+        #else
+            Leanplum.setAppId("YOUR_APP_ID",
+                              withProductionKey: "YOUR_PRODUCTION_KEY")
+        #endif
+        
+        // Optional: Tracks in-app purchases automatically as the "Purchase" event.
+        // To require valid receipts upon purchase or change your reported
+        // currency code from USD, update your app settings.
+        // Leanplum.trackInAppPurchases()
+        
+        // Optional: Tracks all screens in your app as states in Leanplum.
+        // Leanplum.trackAllAppScreens()
+        
+        // Optional: Activates UI Editor.
+        // Requires the Leanplum-iOS-UIEditor framework.
+        // LeanplumUIEditor.shared().allowInterfaceEditing()
+        
+        // Starts a new session and updates the app content from Leanplum.
+        Leanplum.start()
         return true
     }
 
